@@ -1,10 +1,8 @@
 package com.privasia.poller.routes;
 
-import com.privasia.poller.core.repositories.MessageTransactionRepository;
 import com.privasia.poller.core.utils.Constants;
 import com.privasia.poller.processors.MessagePersistProcessor;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.file.GenericFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
