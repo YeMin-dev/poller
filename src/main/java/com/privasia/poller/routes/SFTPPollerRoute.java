@@ -1,6 +1,7 @@
 package com.privasia.poller.routes;
 
 import com.privasia.poller.core.repositories.MessageTransactionRepository;
+import com.privasia.poller.core.utils.Constants;
 import com.privasia.poller.processors.MessagePersistProcessor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.file.GenericFile;
@@ -34,7 +35,10 @@ public class SFTPPollerRoute extends RouteBuilder{
                 .log("Connected to the SFTP server as mmswUser")
                 .setHeader("sourceId", simple("SFTP"))
                 .bean(messagePersistProcessor, "saveMessageTransaction")
-                .log("MessageTransaction saved with ID: ${header.savedMessageTransactionId}");
+                .log("MessageTransaction saved with ID: ${header." + Constants.MESSAGE_TX_ID + "}")
+                .id("persisSFTPPollerMessage");
 
+
+        log.info("SFTP Poller Route Ending ......................");
     }
 }
